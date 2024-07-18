@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8204530480324850778}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -178,17 +178,14 @@ MonoBehaviour:
   minimunTraceDistance: 3
   maxmunTraceDistance: 5
   navMeshAgent: {fileID: 0}
+  EnemyHP: {fileID: 0}
   points:
   - {fileID: 9015415704214814859}
   - {fileID: 9015415704745920895}
   targetPoint: 0
-  monsterattackRate:
-  - 0.3
-  - 0.5
-  - 0.7
-  - 0.9
-  - 1
-  attackmiss: 0
+  PlayerHP: {fileID: 0}
+  nextAttack: 0
+  isAttack: 0
   IsShootAttack: 0
   aleadyAttack: 0
   Bullet: []
@@ -196,7 +193,6 @@ MonoBehaviour:
   BulletSpeed:
   - 3
   - 5
-  Index: 0
 --- !u!114 &5564287745458692418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +449,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9015415705028523870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -552,8 +548,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1146dd25286a249bfcaca669437674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonsterPrefab:
-  - {fileID: 0}
+  LevelTarget: 0
+  ClearCount: 0
+  ClearLevel: 0
+  ClearLevelMenu: {fileID: 0}
   m_HPBar: {fileID: 9015415705196959550}
   bulletbag: {fileID: 0}
   BulletBag: 0
