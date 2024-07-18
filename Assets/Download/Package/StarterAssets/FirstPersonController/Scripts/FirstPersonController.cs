@@ -23,7 +23,7 @@ namespace StarterAssets
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
-		public float JumpHeight = 1.2f;
+		public float JumpHeight = 0f;
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
 
@@ -74,6 +74,8 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
+		private Animator PlayAnim;
+
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -88,6 +90,7 @@ namespace StarterAssets
 
 		private void Awake()
 		{
+			PlayAnim = GetComponent<Animator>();
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -162,7 +165,11 @@ namespace StarterAssets
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+			if (_input.move == Vector2.zero)
+			{
+				targetSpeed = 0.0f;
+				PlayAnim.SetBool("Walk", false);
+			}
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -192,8 +199,10 @@ namespace StarterAssets
 			// if there is a move input rotate player when the player is moving
 			if (_input.move != Vector2.zero)
 			{
-				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+                // move
+                PlayAnim.SetBool("Walk", true);
+                inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+
 			}
 
 			// move the player

@@ -75,8 +75,8 @@ public class PlayerHP : MonoBehaviour
 
         if (hpAmount <= 0)
         {
-            //anim.SetTrigger("Die");
-            Die();
+            StarterAssetsInputs.SetCursorState(true);
+            anim.SetBool("Dead",true);
         }
 
         
@@ -146,7 +146,7 @@ public class PlayerHP : MonoBehaviour
     {
         print("change scene");
         SceneManager.LoadScene("GameOver Menu");
-        //StarterAssetsInputs.SetCursorState(true);
+        
     }
 
 
