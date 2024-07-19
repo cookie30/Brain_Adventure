@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;  // 要有這個才能控制文字框
+using UnityEngine.InputSystem; //新的輸入系統
+using UnityEngine.Animations.Rigging; //Animation Rig
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -26,6 +30,8 @@ public class Weapon : MonoBehaviour
 
     bool reloading;             // 布林變數：儲存是不是正在換彈夾的狀態？True：正在換彈夾、False：換彈夾的動作已結束
     public int weaponNumber;
+
+    [SerializeField]private LayerMask aimCoillderLayerMask=new LayerMask();
 
     [Header("UI物件")]
     public TextMeshProUGUI ammunitionDisplay; // 彈量顯示
@@ -52,17 +58,25 @@ public class Weapon : MonoBehaviour
         if (isGun && bulletsLeft > 0 && !reloading)
         {
             //Ray ray = PlayerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));  // 從攝影機射出一條射線
-            Ray ray = new Ray(transform.position, transform.forward);  // 從攝影機射出一條射線
+            //Ray ray = new Ray(transform.position, transform.forward);  // 從攝影機射出一條射線
+
+            Vector2 ScreenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+            Ray ray = Camera.main.ScreenPointToRay(ScreenCenterPoint);
 
             RaycastHit hit;  // 宣告一個射擊點
             Vector3 targetPoint;  // 宣告一個位置點變數，到時候如果有打到東西，就存到這個變數
 
+
             // 如果射線有打到具備碰撞體的物件
             //if (Physics.Raycast(ray, out hit) == true)
-            if(Physics.Raycast(Camera.main.transform.position,Camera.main.transform.TransformDirection(Vector3.forward)*10,out hit,Mathf.Infinity))
+            //if(Physics.Raycast(Camera.main.transform.position,Camera.main.transform.TransformDirection(Vector3.forward)*10,out hit,Mathf.Infinity))
+            //{
+            //    targetPoint = hit.point;         // 將打到物件的位置點存進 targetPoint
+            //    //print(hit.transform.name);
+            //}
+            if(Physics.Raycast(ray,out hit, 999f, aimCoillderLayerMask))
             {
-                targetPoint = hit.point;         // 將打到物件的位置點存進 targetPoint
-                //print(hit.transform.name);
+                targetPoint= hit.point;
             }
             else
             {
@@ -71,7 +85,7 @@ public class Weapon : MonoBehaviour
             //Debug.DrawRay(ray.origin, targetPoint - ray.origin, Color.red, 10); // 畫出這條射線
             
             //畫出射線(子彈發射點的位置,射線打到的點-射線的原點,指定線畫成紅色)
-            Debug.DrawRay(attackPoint[Random_Points].transform.position, targetPoint - ray.origin, Color.red, 10);
+            //Debug.DrawRay(attackPoint[Random_Points].transform.position, targetPoint - ray.origin, Color.red, 10);
 
             //子彈真正要飛行的方向
             Vector3 shootingDirection = targetPoint - attackPoint[Random_Points].transform.position; // 以起點與終點之間兩點位置，計算出射線的方向

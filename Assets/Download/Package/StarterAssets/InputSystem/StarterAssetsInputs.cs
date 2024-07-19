@@ -53,7 +53,7 @@ namespace StarterAssets
         public void WeaponInput(float wheel)
         {
             weapon = wheel;
-			GameObject.Find("Camera/Weapon").GetComponent<WeaponManagement>().WeaponChange(weapon);
+			GameObject.Find("Weapon").GetComponent<WeaponManagement>().WeaponChange(weapon);
         }
 
         public void MoveInput(Vector2 newMoveDirection)

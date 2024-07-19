@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6184452418626152528}
   - component: {fileID: 6184452418626152535}
   - component: {fileID: 5836194719267640322}
+  - component: {fileID: 7336871503086758390}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,9 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1146dd25286a249bfcaca669437674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    "\u540D\u5B57": 
-    "\u5287\u60C5\u5167\u5BB9": []
   LevelTarget: 0
   ClearCount: 0
   ClearLevel: 0
@@ -67,6 +65,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa4c86291fd1b245adbc56479dcfb9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   MessageFrame: {fileID: 0}
   Name: {fileID: 0}
   Story: {fileID: 0}
+  frameAnim: {fileID: 0}
+--- !u!81 &7336871503086758390
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184452418626152534}
+  m_Enabled: 1
