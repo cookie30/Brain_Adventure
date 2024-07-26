@@ -709,6 +709,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
+    Android: EASYROADS3D_PRO
     Standalone: EASYROADS3D_PRO
   additionalCompilerArguments: {}
   platformArchitecture: {}

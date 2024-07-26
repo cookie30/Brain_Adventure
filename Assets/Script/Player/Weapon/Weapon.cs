@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;  // 要有這個才能控制文字框
 using UnityEngine.InputSystem; //新的輸入系統
-using UnityEngine.Animations.Rigging; //Animation Rig
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -13,7 +12,6 @@ public class Weapon : MonoBehaviour
     public GameObject PlayerObejct;
     public Camera PlayerCamera;
     public Transform[] attackPoint;
-
 
     [Header("子彈預置物件")]
     public GameObject bullet;
@@ -45,7 +43,6 @@ public class Weapon : MonoBehaviour
 
         bulletsLeft = magazineSize;
         reloadingDisplay.enabled = false;  // 將顯示正在換彈夾的字幕隱藏起來
-
 
         ShowAmmoDisplay();                 // 更新彈量顯示
     }

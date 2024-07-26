@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour
     //子彈射速
     public float[] BulletSpeed = { 3.0f, 5.0f };
 
+    [SerializeField] private AudioClip attackClip,shootattackClip,damageClip,walkClip;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();                   // 接收NavMeshAgent
@@ -114,7 +116,9 @@ public class Enemy : MonoBehaviour
     private void Patrolling()
     {
         navMeshAgent.isStopped = false;
+        //SoundEffectManager.Instance.PlaySound(walkClip, transform, 1f);
         navMeshAgent.SetDestination(points[targetPoint].position);
+        
      
         if (navMeshAgent.remainingDistance < 0.5f)
         {
@@ -133,7 +137,7 @@ public class Enemy : MonoBehaviour
 
         navMeshAgent.enabled = true;
         anim.SetBool("Walk", true);
-
+        //SoundEffectManager.Instance.PlaySound(walkClip, transform, 1f);
         //除了標籤為Monster2的物件以外，其他掛著這個腳本的物件都要朝玩家的座標移動
         if (this.gameObject.tag == "Monster2")
         {
@@ -173,6 +177,7 @@ public class Enemy : MonoBehaviour
                     case "Monster3":
                         {
                             anim.SetTrigger("Attack");
+                            SoundEffectManager.Instance.PlaySound(shootattackClip, transform, nextAttack);
                             //產生子彈物件eb(調用Bullet物件陣列中的0號物件，從發射點產生)
                             GameObject eb = Instantiate(Bullet[0], BulletSpwan.position, Quaternion.identity);
                             
@@ -184,6 +189,7 @@ public class Enemy : MonoBehaviour
                     case "Monster4":
                         {
                             anim.SetTrigger("Attack");
+                            SoundEffectManager.Instance.PlaySound(shootattackClip, transform, nextAttack);
                             GameObject eb2 = Instantiate(Bullet[1], BulletSpwan.position, Quaternion.identity);
                             
                             eb2.transform.eulerAngles = this.transform.eulerAngles;
@@ -214,7 +220,7 @@ public class Enemy : MonoBehaviour
                     {
                         nextAttack = Time.time + monsterattackRate[0];
                         anim.SetTrigger("Attack");
-
+                        SoundEffectManager.Instance.PlaySound(attackClip, transform, nextAttack);
                         PlayerHP.hpAmount -= enemyattack[0];
 
                         
