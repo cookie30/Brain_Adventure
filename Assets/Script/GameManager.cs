@@ -31,6 +31,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //保存場景名稱(給遊戲結束的選單使用)
+        string currentScene = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("PreviousScene", currentScene);
+        print(currentScene);
 
         BulletBag = 0;
 
@@ -41,6 +45,7 @@ public class GameManager : MonoBehaviour
             GameObject.FindGameObjectsWithTag("Monster5").Length;
 
         ClearCount = LevelTarget;
+
     }
 
     // Update is called once per frame

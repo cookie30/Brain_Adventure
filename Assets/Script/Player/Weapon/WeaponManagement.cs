@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;  // 要有這個才能控制文字框
 using UnityEngine.InputSystem.HID;
 using Unity.VisualScripting;
+using UnityEngine.Animations.Rigging;
 using System;
 
 public class WeaponManagement : MonoBehaviour
@@ -11,17 +12,21 @@ public class WeaponManagement : MonoBehaviour
 
     [Header("武器")]
     public GameObject[] weaponObjects;        //武器清單
-    
+    public Scope scope;
 
     public int weaponNumber = 0;                     //目前選擇武器的順序編號
     GameObject weaponInUse;                   //目前選擇武器
     public int BulletBagCount;                //彈藥包數量
+
+    public Rig himRig;
 
     private void Start()
     {
         weaponInUse = weaponObjects[0];    // 遊戲一開始設定武器為第0個武器
         //檢查武器清單的編號對應哪個武器
         //print(weaponObjects.Length+" "+this.name);
+
+        //print(scope.isScope);
     }
 
     private void Update()
@@ -38,14 +43,18 @@ public class WeaponManagement : MonoBehaviour
         // 判斷：有沒有按下左鍵？
         if (weaponNumber == 0 && Input.GetMouseButton(0) == true && !PauseMenu.GameisPause)
         {
+            himRig.weight += 1.0f;
+
             if (Time.time > Weapon.nextFire)
             {
                 Weapon.nextFire = Time.time + Weapon.fireRate[weaponNumber];
                 weaponInUse.GetComponent<Weapon>().Attack();
             }
         }
-        else if (weaponNumber==1&&Input.GetMouseButtonDown(0) == true&& !PauseMenu.GameisPause)
+        else if (weaponNumber == 1 && Input.GetMouseButtonDown(0) == true && !PauseMenu.GameisPause)
         {
+            himRig.weight += 1.0f;
+
             // 如果還有子彈，並且沒有正在重裝子彈，就可以射擊
             if (Time.time > Weapon.nextFire)
             {
@@ -53,6 +62,7 @@ public class WeaponManagement : MonoBehaviour
                 weaponInUse.GetComponent<Weapon>().Attack();
             }
         }
+        else himRig.weight = 0;
 
         // 判斷：1.有按下R鍵、2.子彈數量低於彈夾內的彈量、3.不是換彈夾的狀態、4.持有的彈藥包數量不為0，條件都滿足就可以換彈夾
         if (Input.GetKeyDown(KeyCode.R) && BulletBagCount != 0)
@@ -69,7 +79,7 @@ public class WeaponManagement : MonoBehaviour
 
 
         // 判斷：按下數字鍵1，切換為武器0
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)&&scope.isScope==false)
             SwitchWeapon(0, 0);
 
         // 判斷：按下數字鍵2，切換為武器1
@@ -77,7 +87,7 @@ public class WeaponManagement : MonoBehaviour
             SwitchWeapon(0, 1);
 
         
-        if (PickShield.slotFull==true&&Input.GetKeyDown(KeyCode.Alpha3))
+        if (PickShield.slotFull==true&&Input.GetKeyDown(KeyCode.Alpha3)&& scope.isScope == false)
             SwitchWeapon(0, 2);
            
 
@@ -91,12 +101,13 @@ public class WeaponManagement : MonoBehaviour
         //+- 120
 
         //if (Input.GetAxis("Mouse ScrollWheel") > 0f)      // 往前滾動
-        if(wheel > 0)
+        if(wheel > 0 && scope.isScope == false)
         {
             weaponNumber++;
         }
         //else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // 往後滾動
-        else{
+        else if(wheel<=0 && scope.isScope == false)
+        {
             weaponNumber--;
             //if (weaponNumber < 0) weaponNumber = 0;
         }

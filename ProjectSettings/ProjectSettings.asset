@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: "\u9905\u4E7E\u7F50\u4E4B\u5BB6"
   productName: "\u601D\u8003\u9AD4\u9A57\uFF1A\u8166\u5167\u5927\u5192\u96AA"
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 4c784c4231275b74d9a75573c7fe52d8, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1

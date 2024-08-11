@@ -11,6 +11,11 @@ public class PlayerMove : MonoBehaviour
     public float groundDrag;         // 地面的減速
     public float airMultiplier;      // 在空中的加乘速度，如果設定為0就代表不能飛，建議這個值要小於1
 
+    [Header("地板確認")]
+    public float playerHeight;       // 設定玩家高度
+    public LayerMask whatIsGround;   // 設定哪一個圖層是射線可以打到的
+    public bool grounded;            // 布林變數：有沒有打到地面
+
     [Header("按鍵綁定")]
     public KeyCode jumpKey = KeyCode.Space;
 
@@ -19,11 +24,6 @@ public class PlayerMove : MonoBehaviour
     public GameManager gameManager; //
     public float hpMax = 100f;
     public float hpAmount = 100f; //
-
-    [Header("地板確認")]
-    public float playerHeight;       // 設定玩家高度
-    public LayerMask whatIsGround;   // 設定哪一個圖層是射線可以打到的
-    public bool grounded;            // 布林變數：有沒有打到地面
 
     private bool readyToJump;        // 設定是否可以跳躍
     private float horizontalInput;   // 左右方向按鍵的數值(-1 <= X <= +1)

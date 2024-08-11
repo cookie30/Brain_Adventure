@@ -18,11 +18,12 @@ TagManager:
   - Monster4_Bullet
   - BulletBag
   - Shield
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - Weapon

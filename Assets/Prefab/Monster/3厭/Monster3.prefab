@@ -227,6 +227,10 @@ MonoBehaviour:
   BulletSpeed:
   - 3
   - 5
+  attackClip: {fileID: 8300000, guid: ff5f85da24bc943d1abdc5760a22bc81, type: 3}
+  shootattackClip: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
+  damageClip: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
+  walkClip: {fileID: 8300000, guid: 3becec1909f194046945d85ac1077772, type: 3}
 --- !u!1 &5742955963805851166
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,11 @@ namespace StarterAssets
 		[Header("Movement Settings")]
 		public bool analogMovement;
 
-		[Header("Mouse Cursor Settings")]
+		//動畫控制器
+        public Animator anim;
+
+
+        [Header("Mouse Cursor Settings")]
 		bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
@@ -59,9 +63,16 @@ namespace StarterAssets
         public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+            anim = GetComponent<Animator>();
+			anim.SetBool("Walk", true);
 
-		public void LookInput(Vector2 newLookDirection)
+			if (move==Vector2.zero)
+			{
+				anim.SetBool("Walk", false);
+			}
+        }
+
+        public void LookInput(Vector2 newLookDirection)
 		{
 			look = newLookDirection;
 		}

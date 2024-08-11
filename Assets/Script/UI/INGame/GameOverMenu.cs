@@ -8,7 +8,10 @@ public class GameOverMenu : MonoBehaviour
 
     public void ReStart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //讀取之前儲存的場景名稱
+        string previousScene = PlayerPrefs.GetString("PreviousScene", "DefaultScene");
+
+        SceneManager.LoadScene(previousScene);
     }
 
     public void GoBackMain()

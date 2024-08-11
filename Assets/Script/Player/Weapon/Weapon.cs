@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
     public Camera PlayerCamera;
     public Transform[] attackPoint;
 
-    [Header("子彈預置物件")]
+    [Header("預置物件")]
     public GameObject bullet;
 
     [Header("武器設定")]
@@ -25,6 +25,7 @@ public class Weapon : MonoBehaviour
     public float recoilForce;       // 反作用力
     public static float[] fireRate = {0.2f,0.5f};          //攻擊間隔
     public static float nextFire;          //下次攻擊時間
+    public AudioClip fireSound;
 
     bool reloading;             // 布林變數：儲存是不是正在換彈夾的狀態？True：正在換彈夾、False：換彈夾的動作已結束
     public int weaponNumber;
@@ -37,8 +38,16 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        if (this.transform.name == "機關槍") magazineSize = 100;
-        else if (this.transform.name == "狙擊槍") magazineSize = 20;
+
+        if (this.transform.name == "機關槍")
+        {
+            magazineSize = 100;
+
+        }
+        else if (this.transform.name == "狙擊槍") 
+        { 
+            magazineSize = 20;
+        }
         
 
         bulletsLeft = magazineSize;
@@ -50,7 +59,9 @@ public class Weapon : MonoBehaviour
     // 方法：射擊武器
     public void Attack()
     {
-        int Random_Points = Random.Range(1, attackPoint.Length); //make random point from attackPoints length(1~limet)
+        //隨機決定子彈要從哪個發射點出來
+        //make random point from attackPoints length(1~limet)
+        int Random_Points = Random.Range(1, attackPoint.Length);
 
         if (isGun && bulletsLeft > 0 && !reloading)
         {
@@ -80,36 +91,44 @@ public class Weapon : MonoBehaviour
                 targetPoint = ray.GetPoint(75);  // 如果沒有打到物件，就以長度75的末端點取得一個點，存進 targetPoint
             }
             //Debug.DrawRay(ray.origin, targetPoint - ray.origin, Color.red, 10); // 畫出這條射線
-            
+
             //畫出射線(子彈發射點的位置,射線打到的點-射線的原點,指定線畫成紅色)
             //Debug.DrawRay(attackPoint[Random_Points].transform.position, targetPoint - ray.origin, Color.red, 10);
 
             //子彈真正要飛行的方向
-            Vector3 shootingDirection = targetPoint - attackPoint[Random_Points].transform.position; // 以起點與終點之間兩點位置，計算出射線的方向
-            GameObject currentBullet = Instantiate(bullet, attackPoint[Random_Points].transform.position, Quaternion.identity); // 在攻擊點上面產生一個子彈
-            currentBullet.transform.forward = shootingDirection.normalized; // 將子彈飛行方向與射線方向一致
+            // 以起點與終點之間兩點位置，計算出射線的方向
+            Vector3 shootingDirection = targetPoint - attackPoint[Random_Points].transform.position; 
+            // 在攻擊點上面產生一個子彈
+            GameObject currentBullet = Instantiate(bullet, attackPoint[Random_Points].transform.position, Quaternion.identity);
+            
+            // 將子彈飛行方向與射線方向一致
+            currentBullet.transform.forward = shootingDirection.normalized; 
 
             //設定子彈的飛行(方向和力度)
             if (this.transform.name == "機關槍")
             {
+
                 currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * 40, ForceMode.Impulse);
+                SoundEffectManager.Instance.PlaySound(fireSound, transform, 1f);
+
             }
             else if (this.transform.name == "狙擊槍")
             {
                 currentBullet.GetComponent<Rigidbody>().AddForce(currentBullet.transform.forward * 100, ForceMode.Impulse);
+                SoundEffectManager.Instance.PlaySound(fireSound, transform, 1f);
             }
 
             bulletsLeft -=bulletcount;    // 將彈夾中的子彈減去設定好的子彈射出量，以下的寫法都是一樣的意思
-
             // 後座力模擬
             //PlayerObejct.GetComponent<Rigidbody>().AddForce(-shootingDirection.normalized * recoilForce, ForceMode.Impulse);
         }
         ShowAmmoDisplay();                 // 更新彈量顯示
 
+        // 根據武器播放攻擊動畫
         if (this.transform.name == "機關槍") 
         { 
             if (transform.GetChild(0).GetComponent<Animator>() != null)
-                transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");  // 觸發「Attack」的觸發變數(播放攻擊動畫)
+                transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");  
         }
         else if(this.transform.name == "狙擊槍")
         {

@@ -636,4 +636,4 @@ MonoBehaviour:
   attackClip: {fileID: 8300000, guid: 657578e4be6b64dbf9b09deada272e55, type: 3}
   shootattackClip: {fileID: 0}
   damageClip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
-  walkClip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+  walkClip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}

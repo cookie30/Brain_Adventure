@@ -8,10 +8,10 @@ public class Scope : MonoBehaviour
     public GameObject scopeOverlay;
     public GameObject frontsight;
     public GameObject weaponCarma;
-    private bool isScope=false;
+    public bool isScope=false;
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) == true)
+        if (Input.GetMouseButtonDown(1))
         {
             isScope = !isScope;
             animator.SetBool("Scope", isScope);
