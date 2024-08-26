@@ -139,8 +139,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.019295424, y: 0.013629804, z: 0.0013436823}
-  m_Center: {x: 0.00028108852, y: 0.000068774694, z: -0.0035473618}
+  m_Size: {x: 0.019295424, y: 0.013629804, z: 0.012998854}
+  m_Center: {x: 0.00028108835, y: 0.00006877482, z: 0.000009925365}
 --- !u!95 &3645553737148079779
 Animator:
   serializedVersion: 5
@@ -192,6 +192,10 @@ MonoBehaviour:
   BulletSpeed:
   - 3
   - 5
+  attackClip: {fileID: 0}
+  shootattackClip: {fileID: 0}
+  damageClip: {fileID: 0}
+  walkClip: {fileID: 0}
 --- !u!114 &3752625998408849831
 MonoBehaviour:
   m_ObjectHideFlags: 0

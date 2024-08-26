@@ -38,11 +38,14 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        ammunitionDisplay=GameObject.Find("UI/Ammo/ammunition").GetComponent<TextMeshProUGUI>();
+        reloadingDisplay = GameObject.Find("UI/reloading").GetComponent<TextMeshProUGUI>();
 
         if (this.transform.name == "機關槍")
         {
             magazineSize = 100;
-
+            //string path = GetFullPath(this.transform);
+            //print(path);
         }
         else if (this.transform.name == "狙擊槍") 
         { 
@@ -176,6 +179,18 @@ public class Weapon : MonoBehaviour
         {
             ammunitionDisplay.SetText("N/A");
         }
+    }
+
+    //顯示物件路徑
+    string GetFullPath(Transform child)
+    {
+        string path = child.name;
+        while (child.parent != null)
+        {
+            child = child.parent;
+            path = child.name + "/" + path;
+        }
+        return path;
     }
 
 }

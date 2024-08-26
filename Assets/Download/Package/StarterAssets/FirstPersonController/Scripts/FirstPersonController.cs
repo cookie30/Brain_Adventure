@@ -74,8 +74,6 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
-		private Animator PlayAnim;
-
 		private bool IsCurrentDeviceMouse
 		{
 			get
@@ -90,7 +88,6 @@ namespace StarterAssets
 
 		private void Awake()
 		{
-			PlayAnim = GetComponent<Animator>();
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -168,7 +165,6 @@ namespace StarterAssets
 			if (_input.move == Vector2.zero)
 			{
 				targetSpeed = 0.0f;
-				PlayAnim.SetBool("Walk", false);
 			}
 
 			// a reference to the players current horizontal velocity
@@ -200,7 +196,6 @@ namespace StarterAssets
 			if (_input.move != Vector2.zero)
 			{
                 // move
-                PlayAnim.SetBool("Walk", true);
                 inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
 
 			}

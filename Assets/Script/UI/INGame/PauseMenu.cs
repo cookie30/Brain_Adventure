@@ -63,7 +63,7 @@ public class PauseMenu : MonoBehaviour
     //©I¥s³]©w­¶­±
     public void LoadMenu()
     {
-        print("menu");
+        //print("menu");
         Time.timeScale = 1f;
         SettingMenu.SetActive(true);
     }

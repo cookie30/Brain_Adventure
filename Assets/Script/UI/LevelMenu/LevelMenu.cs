@@ -13,16 +13,17 @@ public class LevelMenu : MonoBehaviour
 
     private void Awake()
     {
+        //預設Unlocklevel為1(自動解鎖1-1)
         //ButtonsToArray();
-        int unlockstage = PlayerPrefs.GetInt("UnlockStage",1);
+        // int unlockstage = PlayerPrefs.GetInt("UnlockStage",1);
         int unlocklevel = PlayerPrefs.GetInt("Unlocklevel",1);
-        
-        for(int i = 0; i < buttons.Length; i++)
+        //先禁用所有後續關卡
+        for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
         }
-
-        for(int s = 0; s < unlocklevel; s++)
+        //根據unlocklevel
+        for (int s = 0; s < unlocklevel; s++)
         {
             buttons[s].interactable = true;
         }
@@ -30,11 +31,10 @@ public class LevelMenu : MonoBehaviour
 
     public void OpenLevel(int levelID)
     {
-        int stageID;
-
-        stageID = SwipeController.CurrentPage;
+        int stageID = SwipeController.CurrentPage;
 
         string LevelName = "Level" + stageID + "-" +levelID;
+        //print(LevelName);
         SceneManager.LoadSceneAsync(LevelName);
     }
 

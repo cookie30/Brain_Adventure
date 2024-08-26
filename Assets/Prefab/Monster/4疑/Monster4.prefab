@@ -103,8 +103,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01862523, y: 0.010650763, z: 0.0035593482}
-  m_Center: {x: 0.00028034346, y: 0.0006522492, z: -5.820766e-11}
+  m_Size: {x: 0.01862523, y: 0.010650763, z: 0.009358034}
+  m_Center: {x: 0.0002803433, y: 0.00065224944, z: 0.0021494052}
 --- !u!54 &661218677041291631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   targetName: Player
   minimunTraceDistance: 3
   maxmunTraceDistance: 5
+  isChasingPlayer: 0
   navMeshAgent: {fileID: 0}
   EnemyHP: {fileID: 0}
   points:
@@ -197,6 +198,10 @@ MonoBehaviour:
   BulletSpeed:
   - 3
   - 5
+  attackClip: {fileID: 8300000, guid: be4f12f6d4d86324b809ad20af6e2af9, type: 3}
+  shootattackClip: {fileID: 8300000, guid: be4f12f6d4d86324b809ad20af6e2af9, type: 3}
+  damageClip: {fileID: 0}
+  walkClip: {fileID: 8300000, guid: 77f9dfa1aacaf604b87d15d4fba93c94, type: 3}
 --- !u!114 &1709101702554042084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +357,7 @@ MonoBehaviour:
   ClearCount: 0
   ClearLevel: 0
   ClearLevelMenu: {fileID: 0}
+  enemyhp: {fileID: 0}
   m_HPBar: {fileID: 6609182285806995664}
   bulletbag: {fileID: 0}
   BulletBag: 0

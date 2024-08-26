@@ -52,6 +52,7 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
         }
     }
 
+    //¤Á´«­¶­±
     void MovePage()
     {
         levelPagesRect.LeanMoveLocal(targetPos,tweenTime).setEase(tweenType);
@@ -101,9 +102,6 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
         else if (CurrentPage==MaxPage)
         {
             nextBtn.interactable = false;
-        }
-        {
-             
         }
     }
 }

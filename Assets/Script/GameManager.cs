@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("清完怪後跳出的通關頁面")]
     public ClearLevelMenu ClearLevelMenu;
 
+    public EnemyHP enemyhp;
 
     [Header("玩家血條圖片設定")]
     public Image m_HPBar;  //血條圖片
@@ -31,26 +32,39 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //保存場景名稱(給遊戲結束的選單使用)
         string currentScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("PreviousScene", currentScene);
-        print(currentScene);
+        //print(currentScene);
 
         BulletBag = 0;
 
-        LevelTarget = GameObject.FindGameObjectsWithTag("Monster1").Length+
-            GameObject.FindGameObjectsWithTag("Monster2").Length+
-            GameObject.FindGameObjectsWithTag("Monster3").Length+
-            GameObject.FindGameObjectsWithTag("Monster4").Length+
-            GameObject.FindGameObjectsWithTag("Monster5").Length;
+        LevelTarget = GameObject.FindGameObjectsWithTag("Monster1").Length +
+        GameObject.FindGameObjectsWithTag("Monster2").Length +
+        GameObject.FindGameObjectsWithTag("Monster3").Length +
+        GameObject.FindGameObjectsWithTag("Monster4").Length +
+        GameObject.FindGameObjectsWithTag("Monster5").Length +
+        GameObject.FindGameObjectsWithTag("Boss").Length;
 
         ClearCount = LevelTarget;
+
+        enemyhp=GameObject.FindObjectOfType<EnemyHP>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        LevelTarget = GameObject.FindGameObjectsWithTag("Monster1").Length +
+        GameObject.FindGameObjectsWithTag("Monster2").Length +
+        GameObject.FindGameObjectsWithTag("Monster3").Length +
+        GameObject.FindGameObjectsWithTag("Monster4").Length +
+        GameObject.FindGameObjectsWithTag("Monster5").Length +
+        GameObject.FindGameObjectsWithTag("Boss").Length;
+
+        ClearCount = LevelTarget;
 
         if (bulletbag != null)
         {
@@ -63,6 +77,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("已打倒場上所有怪物！");
             if (ClearLevel)
             {
+                UnlockLevel();
                 ShowClearLevel();
             }
 
@@ -72,9 +87,32 @@ public class GameManager : MonoBehaviour
             ClearLevel = false;
         }
 
-        void ShowClearLevel(){
-            ClearLevelMenu.SetUP();
-        }
+    }
 
+    void ShowClearLevel()
+    {
+        enemyhp.Monster1_Buff = false;
+        enemyhp.Monster2_Buff = false;
+        enemyhp.Monster3_Buff = false;
+        enemyhp.Monster4_Buff = false;
+        enemyhp.Monster5_Buff = false;
+        ClearLevelMenu.SetUP();
+    }
+
+    public void UnlockLevel()
+    {
+        //print("準備解鎖關卡...");
+        //print("Scene:"+SceneManager.GetActiveScene().buildIndex);
+        //print("ReachedIndex:" + PlayerPrefs.GetInt("ReachedIndex"));
+        //print("UnlockLevel:" + PlayerPrefs.GetInt("Unlocklevel"));
+        //假如目前能加載的場景編號大於等於變數關卡編號，則讓已解鎖關卡編號+1(可遊玩關卡上限+1)
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex+1);
+            PlayerPrefs.SetInt("Unlocklevel", PlayerPrefs.GetInt("Unlocklevel", 1) + 1);
+
+            print("關卡解鎖成功！");
+            PlayerPrefs.Save();
+        }
     }
 }

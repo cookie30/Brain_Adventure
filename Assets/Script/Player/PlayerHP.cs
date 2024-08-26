@@ -12,7 +12,6 @@ public class PlayerHP : MonoBehaviour
 {
     public GameManager gameManager;
     public StarterAssetsInputs StarterAssetsInputs;
-    public AudioSource AudioSource;
 
     public float Maxhp = 100f;
     public float hpAmount = 0f;
@@ -20,17 +19,10 @@ public class PlayerHP : MonoBehaviour
 
     private Animator anim;
 
-    [Header("判定腳步聲")]
-    public AudioClip Road, Grass, Run; //音檔
-    public RaycastHit WalkTypeHit; //偵測地面射線
-    public Transform HitStart; //射線起點
-    public float RayLength; //射線長度
-    public LayerMask layerMask; //地面蒙版(讓射線無視除地面以外的東西)
-
     private void Start()
     {
-        anim = GetComponent<Animator>();  
-        gameManager=GameObject.Find("GameManager").GetComponent<GameManager>();
+        anim = transform.Find("1").gameObject.GetComponent<Animator>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         StarterAssetsInputs=GetComponent<StarterAssetsInputs>();
 
         hpAmount = Maxhp;
@@ -45,30 +37,35 @@ public class PlayerHP : MonoBehaviour
 
         if (hit.gameObject.tag == "Monster1")
         {
-            hpAmount -= EnemyAttack.enemyattack[0];
+            hpAmount -= Enemy.enemyattack[0];
             gameManager.m_HPBar.fillAmount = hpAmount / Maxhp;
         }
         else if (hit.gameObject.tag == "Monster2")
         {
-            hpAmount -= EnemyAttack.enemyattack[1];
-            gameManager.m_HPBar.fillAmount = hpAmount/Maxhp;
+            hpAmount -= Enemy.enemyattack[1];
+            gameManager.m_HPBar.fillAmount = hpAmount / Maxhp;
         }
         // ||是或者，&&是而且
-        else if (hit.gameObject.tag == "Monster3"|| 
-            hit.gameObject.tag== "Monster3_Bullet")
+        else if (hit.gameObject.tag == "Monster3" ||
+            hit.gameObject.tag == "Monster3_Bullet")
         {
-            hpAmount -= EnemyAttack.enemyattack[2];
-            gameManager.m_HPBar.fillAmount = hpAmount/Maxhp;
+            hpAmount -= Enemy.enemyattack[2];
+            gameManager.m_HPBar.fillAmount = hpAmount / Maxhp;
         }
         else if (hit.gameObject.tag == "Monster4" ||
             hit.gameObject.tag == "Monster4_Bullet")
         {
-            hpAmount -= EnemyAttack.enemyattack[3];
+            hpAmount -= Enemy.enemyattack[3];
             gameManager.m_HPBar.fillAmount = hpAmount / Maxhp;
         }
-        else if(hit.gameObject.tag == "Monster5")
+        else if (hit.gameObject.tag == "Monster5")
         {
-            hpAmount -= EnemyAttack.enemyattack[4];
+            hpAmount -= Enemy.enemyattack[4];
+            gameManager.m_HPBar.fillAmount = hpAmount / Maxhp;
+        }
+        else if (hit.gameObject.tag == "Boss")
+        {
+            hpAmount -= Enemy.enemyattack[5];
             gameManager.m_HPBar.fillAmount = hpAmount / Maxhp;
         }
         //假如碰到的是血包
@@ -155,32 +152,7 @@ public class PlayerHP : MonoBehaviour
         
     }
 
-    //偵測玩家的腳(射線)碰到的地面材質/是否按下衝刺鍵來撥放對應音效
-    public void FootStep()
-    {
-        if(Physics.Raycast(HitStart.position,HitStart.transform.up*-1,
-            out WalkTypeHit, RayLength, layerMask))
-        {
-            if (WalkTypeHit.collider.CompareTag("Road"))
-            {
-                PlayFootstepSound(Road);
-            }
-            else if (WalkTypeHit.collider.CompareTag("Garss"))
-            {
-                PlayFootstepSound(Grass);
-            }
-            else if(StarterAssetsInputs.sprint)
-            {
-                PlayFootstepSound(Run);
-            }
-        }
-    }
 
-    void PlayFootstepSound(AudioClip audio)
-    {
-        //播放音效
-        AudioSource.PlayOneShot(audio);
-    }
 
 }
 

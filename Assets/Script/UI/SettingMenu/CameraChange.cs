@@ -10,16 +10,16 @@ public class CameraChange : MonoBehaviour
 
     public void ManageCamera()
     {
-        if (Manager == 0 && SettingMenu.DefaultView == true)
-        {
-            Cam1();
-            Manager = 1;
-        }
-        else
-        {
-            Cam2();
-            Manager = 0;
-        }
+        //if (Manager == 0 && SettingMenu.DefaultView == true)
+        //{
+        //    Cam1();
+        //    Manager = 1;
+        //}
+        //else
+        //{
+        //    Cam2();
+        //    Manager = 0;
+        //}
     }
 
     void Cam1()

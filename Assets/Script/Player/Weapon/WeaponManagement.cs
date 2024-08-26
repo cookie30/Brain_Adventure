@@ -9,6 +9,7 @@ using System;
 
 public class WeaponManagement : MonoBehaviour
 {
+    public DialogueManager dialogueManager;
 
     [Header("武器")]
     public GameObject[] weaponObjects;        //武器清單
@@ -22,10 +23,11 @@ public class WeaponManagement : MonoBehaviour
 
     private void Start()
     {
+        dialogueManager=GameObject.Find("GameManager").GetComponent<DialogueManager>();
+        //print(dialogueManager.DialogueisPlay);
         weaponInUse = weaponObjects[0];    // 遊戲一開始設定武器為第0個武器
         //檢查武器清單的編號對應哪個武器
         //print(weaponObjects.Length+" "+this.name);
-
         //print(scope.isScope);
     }
 
@@ -41,7 +43,8 @@ public class WeaponManagement : MonoBehaviour
     {
 
         // 判斷：有沒有按下左鍵？
-        if (weaponNumber == 0 && Input.GetMouseButton(0) == true && !PauseMenu.GameisPause)
+        if (weaponNumber == 0 && Input.GetMouseButton(0) == true
+            && !PauseMenu.GameisPause && !dialogueManager.DialogueisPlay)
         {
             himRig.weight += 1.0f;
 
@@ -51,7 +54,8 @@ public class WeaponManagement : MonoBehaviour
                 weaponInUse.GetComponent<Weapon>().Attack();
             }
         }
-        else if (weaponNumber == 1 && Input.GetMouseButtonDown(0) == true && !PauseMenu.GameisPause)
+        else if (weaponNumber == 1 && Input.GetMouseButtonDown(0) == true &&
+            !PauseMenu.GameisPause && !dialogueManager.DialogueisPlay)
         {
             himRig.weight += 1.0f;
 

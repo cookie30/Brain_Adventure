@@ -63,7 +63,7 @@ namespace StarterAssets
         public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-            anim = GetComponent<Animator>();
+            anim = GameObject.Find("Player/1").GetComponent<Animator>();
 			anim.SetBool("Walk", true);
 
 			if (move==Vector2.zero)

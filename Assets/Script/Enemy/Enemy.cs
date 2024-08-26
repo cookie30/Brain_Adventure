@@ -8,18 +8,21 @@ public class Enemy : MonoBehaviour
 {
     [Header("追蹤目標設定")]
     public string targetName = "Player";       // 設定目標物件的標籤名稱
-    public float minimunTraceDistance = 3.0f;  // 設定最短的追蹤距離
-    public float maxmunTraceDistance = 5.0f;   //設定最長的追蹤距離
-    public static float shootdistance = 4.0f; // 設定中間的追蹤距離(切換到遠程攻擊的距離)
+    public float minimunTraceDistance = 3.5f;  // 設定最短的追蹤距離
+    public float maxmunTraceDistance = 7.0f;   //設定最長的追蹤距離
+    public static float shootdistance = 6f; // 設定中間的追蹤距離(切換到遠程攻擊的距離)
     public static float distance;
     public static bool PlayerInShootRange;     //設定玩家是否在射擊範圍
+    public bool isChasingPlayer = false;
 
     private Rigidbody Monsterrigidbody;         //怪物模型的鋼體
     private Animator anim;
 
+
     public NavMeshAgent navMeshAgent;                 // 宣告NavMeshAgent物件
     GameObject targetObject = null;            // 目標物件的變數
     public EnemyHP EnemyHP;
+    public DialogueManager dialogueManager;
 
     [Header("巡邏模式設定")]
     public Transform[] points;
@@ -29,9 +32,9 @@ public class Enemy : MonoBehaviour
 
     [Header("攻擊設定")]
     //敵人攻擊力
-    public static float[] enemyattack = { 1, 3, 5, 7, 10 };
+    public static float[] enemyattack = { 1, 3, 5, 7, 10,15 };
     //敵人攻擊間隔    
-    public static float[] monsterattackRate = { 0.3f, 0.5f, 0.7f, 0.9f, 1.0f };
+    public static float[] monsterattackRate = { 0.3f, 0.5f, 0.7f, 0.9f, 1.0f,1.5f };
     //敵人下次攻擊時間    
     public float nextAttack;
     //判斷是否在攻擊
@@ -47,7 +50,7 @@ public class Enemy : MonoBehaviour
     //子彈射速
     public float[] BulletSpeed = { 3.0f, 5.0f };
 
-    [SerializeField] private AudioClip attackClip,shootattackClip,damageClip,walkClip;
+    [SerializeField] private AudioClip attackClip,shootattackClip,walkClip;
 
     void Start()
     {
@@ -55,6 +58,7 @@ public class Enemy : MonoBehaviour
         Monsterrigidbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         EnemyHP=GetComponent<EnemyHP>();
+        dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
 
         Monsterrigidbody.freezeRotation = true;
         isAttack= false;
@@ -71,32 +75,46 @@ public class Enemy : MonoBehaviour
 
         // 判斷式：判斷距離是否低於最小追蹤距離，如果與目標的距離小於最小距離就追蹤，否則就不追蹤(切換成定點巡邏模式)
         //★★★判斷的方法應該從大到小，如traceDistance 為最大值(追蹤)，然後再判斷 shootDistance(攻擊)
-        if (distance < maxmunTraceDistance)
+        if (distance < maxmunTraceDistance && !dialogueManager.DialogueisPlay)
         {
             //判斷距離是否小於射擊距離，如果與目標距離小於射擊距離就呼叫ShootPlayer方法：
             //將PlayerInShootRange設為true，並停止尋路(站在原地)+播放攻擊動畫
-            if (distance < shootdistance|| EnemyHP.lifeAmount != EnemyHP.maxLife)
+            if (distance < shootdistance)
             {
                 PlayerInShootRange = true;
                 ShootPlayer();
             }
-            else if (distance < minimunTraceDistance && IsShootAttack == false &&
-                    PlayerInShootRange == false|| EnemyHP.lifeAmount != EnemyHP.maxLife)
+            else if (distance < minimunTraceDistance && 
+                !IsShootAttack &&!PlayerInShootRange)
             {
                     Attack();
             }
             else
             {
                 PlayerInShootRange = false;
-                ChasePlayer();
+                isChasingPlayer = true;
             }
         }
         else
         {
             //假如上述條件(距離>最小追蹤距離和攻擊距離)成立，則關閉玩家進入攻擊範圍的開關，並進入巡邏模式
             PlayerInShootRange = false;
+            isChasingPlayer = false;
             Patrolling();
         }
+
+        if(EnemyHP.lifeAmount != EnemyHP.maxLife)
+        {
+            isChasingPlayer=true;
+        }
+
+        if (isChasingPlayer)
+        {
+            //print("開始追玩家！");
+            ChasePlayer();
+        }
+
+
 
     }
 
@@ -139,7 +157,7 @@ public class Enemy : MonoBehaviour
         anim.SetBool("Walk", true);
         //SoundEffectManager.Instance.PlaySound(walkClip, transform, 1f);
         //除了標籤為Monster2的物件以外，其他掛著這個腳本的物件都要朝玩家的座標移動
-        if (this.gameObject.tag == "Monster2")
+        if (this.gameObject.tag == "Monster2"|| this.gameObject.tag == "Boss")
         {
             return;
         }
@@ -194,6 +212,18 @@ public class Enemy : MonoBehaviour
                             
                             eb2.transform.eulerAngles = this.transform.eulerAngles;
                             nextAttack = Time.time + monsterattackRate[3];
+                            break;
+                        }
+                    case "Boss":
+                        {
+                            anim.SetTrigger("Attack");
+                            SoundEffectManager.Instance.PlaySound(shootattackClip, transform, nextAttack);
+
+                            int monster_index = Random.Range(2, 7);
+                            //print("monster:"+monster_index);
+                            GameObject m1 = Instantiate(Bullet[monster_index], BulletSpwan.position, Quaternion.identity);
+
+                            nextAttack = Time.time + monsterattackRate[5];
                             break;
                         }
                 }
@@ -255,11 +285,18 @@ public class Enemy : MonoBehaviour
                     }
                 case "Monster5":
                     {
-
                         nextAttack = Time.time + monsterattackRate[4];
                         anim.SetTrigger("Attack");
 
                         PlayerHP.hpAmount -= enemyattack[4];
+                        break;
+                    }
+                case "Boss":
+                    {
+                        nextAttack = Time.time + monsterattackRate[5];
+                        anim.SetTrigger("Attack");
+
+                        PlayerHP.hpAmount -= enemyattack[5];
                         break;
                     }
             }

@@ -21,7 +21,7 @@ public class PickShield : MonoBehaviour
 
     private void Start()
     {
-
+        Player = GameObject.Find("Player").transform;
         /*
         if (!equipped)
         {

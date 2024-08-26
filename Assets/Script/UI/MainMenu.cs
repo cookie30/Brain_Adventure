@@ -7,7 +7,10 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayNewGame()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadSceneAsync("Level1-1");
+
+        
     }
 
     public void QuitGame()

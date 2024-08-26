@@ -15,14 +15,14 @@ public class SettingMenu : MonoBehaviour
     //混音器
     public AudioMixer mainAudioMixer;
     //切換視角按鈕和默認設定
-    public Toggle FirstView, TriView;
-    public static bool DefaultView=true;
-    CameraChange CameraChange;
+    //public Toggle FirstView, TriView;
+    //public static bool DefaultView=true;
+    //CameraChange CameraChange;
     
 
     private void Start()
     {
-        DefaultView = true;
+        //DefaultView = true;
     }
 
     public void ChangeQuality()
@@ -45,15 +45,15 @@ public class SettingMenu : MonoBehaviour
         mainAudioMixer.SetFloat("SE", Mathf.Log10(SEVol.value) * 20f);
     }
 
-    public void ChangetoFirstView()
-    {
-        DefaultView = true;
-        CameraChange.Manager=0;
-    }
+    //public void ChangetoFirstView()
+    //{
+    //    DefaultView = true;
+    //    CameraChange.Manager=0;
+    //}
 
-    public void ChangetoTriView()
-    {
-        DefaultView = false;
-        CameraChange.Manager=1;
-    }
+    //public void ChangetoTriView()
+    //{
+    //    DefaultView = false;
+    //    CameraChange.Manager=1;
+    //}
 }

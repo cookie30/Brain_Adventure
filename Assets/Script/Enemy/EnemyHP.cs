@@ -31,9 +31,6 @@ public class EnemyHP : MonoBehaviour
     public float itemindex; //掉落物標號
     public float dropRate; //掉落機率
 
-    //引用其他腳本的變數
-    //GameManager_在關卡中的怪物數量
-    
     //Weapon_玩家的槍械武器子彈數量
     private int BulletSize;
     //Shield_玩家使用推擊技能、推擊技能的推動範圍
@@ -64,18 +61,28 @@ public class EnemyHP : MonoBehaviour
     void Start()
     {
         Enemy = GetComponent<Enemy>();
-
         navMeshAgent = GetComponent<NavMeshAgent>();                   // 接收NavMeshAgent
         anim = GetComponent<Animator>();
+
         lifeAmount = maxLife;
         
+        Buff1=GameObject.Find("UI/Buff/BackGround/Buff1").GetComponent<Image>();
         Buff1.enabled = false;
+        Monster1_Buff = false;
+        Buff2=GameObject.Find("UI/Buff/BackGround/Buff2").GetComponent<Image>();
         Buff2.enabled = false;
+        Monster2_Buff = false;
+        Buff3=GameObject.Find("UI/Buff/BackGround/Buff3").GetComponent<Image>();
         Buff3.enabled = false;
+        Monster3_Buff = false;
+        Buff4=GameObject.Find("UI/Buff/BackGround/Buff4").GetComponent<Image>();
         Buff4.enabled = false;
+        Monster4_Buff = false;
+        Buff5=GameObject.Find("UI/Buff/BackGround/Buff5").GetComponent<Image>();
         Buff5.enabled = false;
+        Monster5_Buff = false;
 
-        
+        dropspwan = this.gameObject.transform;
 
         //Playermovespeed = GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed;
         //BulletSize = GameObject.Find("Player/Camera/Weapon").GetComponent<Weapon>().magazineSize;
@@ -86,7 +93,7 @@ public class EnemyHP : MonoBehaviour
     {
         if (盾牌!=null)
         {
-            PlayUsePush = GameObject.Find("Player/Camera/Weapon/盾牌").GetComponent<Shield>().PlayerUsePush;
+            PlayUsePush = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/盾牌").GetComponent<Shield>().PlayerUsePush;
             //print("PlayUsePush"+PlayUsePush);
         }
 
@@ -135,7 +142,8 @@ public class EnemyHP : MonoBehaviour
                         Buff1.enabled=true;
 
                         //提升移速
-                        GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed=5f;
+                        GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed=
+                            GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed+1f;
 
                         //提升攻速(攻擊間隔)
                         Weapon.fireRate[0] = 0.1f;
@@ -148,7 +156,8 @@ public class EnemyHP : MonoBehaviour
                     else
                     {
                         //移速
-                        GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed = 4f;
+                        GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed =
+                            GameObject.Find("Player").GetComponent<FirstPersonController>().MoveSpeed;
 
                         //攻速(攻擊間隔)
                         Weapon.fireRate[0] = 0.2f;
@@ -219,8 +228,8 @@ public class EnemyHP : MonoBehaviour
 
 
                         //降低目前子彈數量&上限
-                        GameObject 機關槍 = GameObject.Find("Player/Camera/Weapon/機關槍");
-                        GameObject 狙擊槍 = GameObject.Find("Player/Camera/Weapon/狙擊槍");
+                        GameObject 機關槍 = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/機關槍");
+                        GameObject 狙擊槍 = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/狙擊槍");
                         if (機關槍 != null&&機關槍.GetComponent<Weapon>().magazineSize==100)
                         {
                             
@@ -244,8 +253,8 @@ public class EnemyHP : MonoBehaviour
                     else
                     {
                         //降低目前子彈數量&上限
-                        GameObject 機關槍 = GameObject.Find("Player/Camera/Weapon/機關槍");
-                        GameObject 狙擊槍 = GameObject.Find("Player/Camera/Weapon/狙擊槍");
+                        GameObject 機關槍 = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/機關槍");
+                        GameObject 狙擊槍 = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/狙擊槍");
                         if (機關槍 != null && 機關槍.GetComponent<Weapon>().magazineSize == 100)
                         {
 
@@ -353,7 +362,7 @@ public class EnemyHP : MonoBehaviour
         }
     }
 
-    // 碰撞偵測
+    // 碰撞偵測：玩家碰到怪物
     private void OnTriggerEnter(Collider collision)
     {
         //在後台顯示怪物碰到的物件名稱
@@ -364,14 +373,16 @@ public class EnemyHP : MonoBehaviour
             lifeAmount -= Gun1Attack;
             lifeBarImage.fillAmount = lifeAmount / maxLife;
             anim.SetBool("Hurt", true);
-            Enemy.Attack();
+            Enemy.isChasingPlayer= true;
+            //print(Enemy.isChasingPlayer);
         }
         else if (collision.gameObject.tag == "Gun2_Bullet")
         {
             lifeAmount -= Gun2Attack;
             lifeBarImage.fillAmount = lifeAmount / maxLife;
             anim.SetBool("Hurt", true);
-            Enemy.Attack();
+            Enemy.isChasingPlayer = true;
+            //print(Enemy.isChasingPlayer);
         }
         else if (collision.gameObject.tag == "Shield" )
         {
