@@ -75,6 +75,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TransparentMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -107,6 +111,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ContrastDetailMap: 0
+    - _ContrastTransparentMap: 0
     - _Cull: 0
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -131,8 +136,10 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _IntensityMask: 1
+    - _IntensityTransparentMap: 0
     - _InvertABaseColor: 0
     - _InvertMask: 0
+    - _InvertTransparent: 0
     - _LightingEnabled: 1
     - _Metallic: 0
     - _Mode: 0
@@ -150,12 +157,14 @@ Material:
     - _SpecularHighlights: 1
     - _SpecularIntensity: 0.2
     - _SpreadDetailMap: 0
+    - _SpreadTransparentMap: 0
     - _SrcBlend: 1
     - _Surface: 0
     - _TriplanarFalloff: 20
     - _TriplanarSpaceProjection: 0
     - _UVSec: 0
     - _UseAoFromMainProperties: 1
+    - _UseBaseColorAlpha: 0
     - _UseEmissionFromMainProperties: 1
     - _VisualizeMask: 0
     - _WorkflowMode: 1

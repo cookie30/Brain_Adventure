@@ -2387,7 +2387,7 @@ MonoBehaviour:
   bulletcount: 1
   reloadTime: 2
   recoilForce: 1.5
-  fireSound: {fileID: 8300000, guid: f414d4ebcae02ad48a4f5c73f8acdb0f, type: 3}
+  fireSound: {fileID: 8300000, guid: 541bca81a9af7514082aa928838f0d60, type: 3}
   weaponNumber: 0
   aimCoillderLayerMask:
     serializedVersion: 2
@@ -4902,7 +4902,7 @@ MonoBehaviour:
   bulletcount: 1
   reloadTime: 2
   recoilForce: 1.5
-  fireSound: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
+  fireSound: {fileID: 8300000, guid: 78b0a4606bbcfaf4ebd393cd28525e49, type: 3}
   weaponNumber: 0
   aimCoillderLayerMask:
     serializedVersion: 2

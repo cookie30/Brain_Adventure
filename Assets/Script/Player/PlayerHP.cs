@@ -80,6 +80,8 @@ public class PlayerHP : MonoBehaviour
         {
             StarterAssetsInputs.SetCursorState(true);
             anim.SetBool("Dead",true);
+
+            Die();
         }
 
         

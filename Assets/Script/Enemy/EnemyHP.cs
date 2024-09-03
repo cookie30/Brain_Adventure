@@ -255,12 +255,12 @@ public class EnemyHP : MonoBehaviour
                         //降低目前子彈數量&上限
                         GameObject 機關槍 = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/機關槍");
                         GameObject 狙擊槍 = GameObject.Find("Player/1/mixamorig:Hips/mixamorig:Spine/Weapon/狙擊槍");
-                        if (機關槍 != null && 機關槍.GetComponent<Weapon>().magazineSize == 100)
+                        if (機關槍 != null && 機關槍.GetComponent<Weapon>().magazineSize == 50)
                         {
 
                             機關槍.GetComponent<Weapon>().magazineSize = 100;
                         }
-                        else if (狙擊槍 != null && 狙擊槍.GetComponent<Weapon>().magazineSize == 20)
+                        else if (狙擊槍 != null && 狙擊槍.GetComponent<Weapon>().magazineSize == 10)
                         {
                             狙擊槍.GetComponent<Weapon>().magazineSize = 20;
                         }

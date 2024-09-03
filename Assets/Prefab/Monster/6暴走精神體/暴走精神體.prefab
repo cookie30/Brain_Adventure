@@ -163,7 +163,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 30}
+  m_SizeDelta: {x: 445, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1161649431057473461
 CanvasRenderer:
@@ -1961,6 +1961,7 @@ MonoBehaviour:
   isChasingPlayer: 0
   navMeshAgent: {fileID: 0}
   EnemyHP: {fileID: 0}
+  dialogueManager: {fileID: 0}
   points:
   - {fileID: 5825858751829588333}
   targetPoint: 0
@@ -1982,7 +1983,6 @@ MonoBehaviour:
   - 5
   attackClip: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
   shootattackClip: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
-  damageClip: {fileID: 0}
   walkClip: {fileID: 0}
 --- !u!114 &6598418900119413721
 MonoBehaviour:
