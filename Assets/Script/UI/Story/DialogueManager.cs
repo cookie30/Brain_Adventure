@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
 {
     public GameManager gameManager;
 
-    public GameObject instructionUI;
+    public Hip Hip;
     private int dialoguePhase = 0;    // 追蹤對話的階段
 
 
@@ -55,9 +55,9 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         portraits = new Queue<Texture>();
 
-        if (instructionUI != null )
+        if (Hip != null )
         {
-            instructionUI.SetActive(false);
+            Hip.gameObject.SetActive( true );
         }
         else
         {
@@ -342,7 +342,9 @@ public class DialogueManager : MonoBehaviour
             else if (dialoguePhase == 2)
             {
                 // 如果是第二段對話結束，顯示操作說明介面
-                instructionUI.SetActive(true);
+                //instructionUI.SetActive(true);
+
+                Hip.OpenHip();
             }
         }
 

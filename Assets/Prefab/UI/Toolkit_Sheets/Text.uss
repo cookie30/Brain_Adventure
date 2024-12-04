@@ -1,0 +1,8 @@
+Label {
+    -unity-font-definition: url("project://database/Assets/Download/Package/TextMesh%20Pro/Fonts/JF-OPENHUNINN-2.asset?fileID=11400000&guid=44ff78b975684e24ebd166e526fe2349&type=2#JF-OPENHUNINN-2");
+    -unity-font: url("project://database/Assets/Media/Font/JF-OPENHUNINN-2.0.TTF?fileID=12800000&guid=bf1695e539e6d7b4e8151695873a584f&type=3#JF-OPENHUNINN-2.0");
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+}
