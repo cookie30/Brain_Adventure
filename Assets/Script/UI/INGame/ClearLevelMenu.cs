@@ -8,6 +8,7 @@ public class ClearLevelMenu : MonoBehaviour
 {
     public StarterAssetsInputs StarterAssetsInputs;
     public Enemy Enemy;
+    public DialogueManager DialogueManager;
 
     public void SetUP()
     {
@@ -20,9 +21,9 @@ public class ClearLevelMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-        if (SceneManager.GetActiveScene().name == "Level5-5")
+        if (SceneManager.GetActiveScene().name == "Level5-3")
         {
-            SceneManager.LoadScene("End Scene");
+            
         }
     }
 

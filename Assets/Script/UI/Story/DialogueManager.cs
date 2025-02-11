@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     public Hip Hip;
     private int dialoguePhase = 0;    // 追蹤對話的階段
 
+    //是否達成結局的變數
+    
 
     //放姓名、對話和頭像
     private Queue<string> sentences;

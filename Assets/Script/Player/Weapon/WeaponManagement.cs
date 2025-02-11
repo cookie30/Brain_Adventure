@@ -13,12 +13,13 @@ public class WeaponManagement : MonoBehaviour
 
     [Header("武器")]
     public GameObject[] weaponObjects;        //武器清單
-    public Scope scope;
+    public Scope scope;                       //放狙擊槍腳本
 
-    public int weaponNumber = 0;                     //目前選擇武器的順序編號
+    public int weaponNumber = 0;              //目前選擇武器的順序編號
     GameObject weaponInUse;                   //目前選擇武器
     public int BulletBagCount;                //彈藥包數量
 
+    //手臂骨骼權重
     public Rig himRig;
 
     private void Start()

@@ -46,7 +46,7 @@ public class StoryController : MonoBehaviour
             }
             else
             {
-                // 直接取得 name 屬性，控制器不為 null 時 controllerName 為 controller.name，否則為 "Unknown"
+                // 直接取得 name 屬性，控制器不為 null 時 controllerName 指定為 controller.name，否則顯示 "Unknown"
                 string controllerName = contro.Value.name;
 
                 if (controllerName == null)

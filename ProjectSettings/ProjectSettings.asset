@@ -858,11 +858,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: d508ec42-f59e-43a2-b1e7-b5adbb491b59
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Brain_Adventure
+  organizationId: e225593469
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
