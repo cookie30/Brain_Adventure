@@ -51,7 +51,7 @@ MonoBehaviour:
   dialogue:
     "\u540D\u5B57":
     - "\u5C11\u5973"
-    - 
+    - ' '
     portraits:
     - {fileID: 8400000, guid: b0c85591854a8ad4ea78600b1a227cd3, type: 2}
     - {fileID: 0}
@@ -1350,6 +1350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StarterAssetsInputs: {fileID: 0}
   Enemy: {fileID: 0}
+  DialogueManager: {fileID: 0}
 --- !u!1 &967146390532713123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1650,7 +1651,9 @@ MonoBehaviour:
   ClearCount: 0
   ClearLevel: 0
   ClearLevelMenu: {fileID: 967146390492086087}
+  dialogueManager: {fileID: 0}
   enemyhp: {fileID: 0}
+  isLastLevel: 0
   m_HPBar: {fileID: 967146390624339055}
   bulletbag: {fileID: 967146391839757803}
   BulletBag: 0
@@ -9798,7 +9801,7 @@ MonoBehaviour:
     - ' '
     - "\u5169\u4EBA"
     - ' '
-    - 
+    - ' '
     portraits:
     - {fileID: 0}
     - {fileID: 8400000, guid: b0c85591854a8ad4ea78600b1a227cd3, type: 2}

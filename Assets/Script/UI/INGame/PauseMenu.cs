@@ -15,7 +15,16 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
-        StarterAssetsInputs=GameObject.Find("Player").GetComponent<StarterAssetsInputs>();
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if(currentScene=="End Scene")
+        {
+            StarterAssetsInputs = null;
+        }
+        else
+        {
+           StarterAssetsInputs =GameObject.Find("Player").GetComponent<StarterAssetsInputs>();
+        }
     }
 
     // Update is called once per frame
@@ -24,8 +33,11 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Cursor.visible = true;
+
+
             //設置游標狀態為true(鎖定游標移動)
             StarterAssetsInputs.SetCursorState(true);
+            
             if (GameisPause)
             {
                 Resume();

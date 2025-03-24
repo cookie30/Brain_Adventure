@@ -17,8 +17,11 @@ public class GameManager : MonoBehaviour
     public bool ClearLevel; //是否通關
     [Tooltip("清完怪後跳出的通關頁面")]
     public ClearLevelMenu ClearLevelMenu;
+    [Tooltip("結局劇情")]
+    public DialogueManager dialogueManager;
 
     public EnemyHP enemyhp;
+    public bool isLastLevel=false; //是否為最後一關
 
     [Header("玩家血條圖片設定")]
     public Image m_HPBar;  //血條圖片
@@ -40,14 +43,7 @@ public class GameManager : MonoBehaviour
 
         BulletBag = 0;
 
-        LevelTarget = GameObject.FindGameObjectsWithTag("Monster1").Length +
-        GameObject.FindGameObjectsWithTag("Monster2").Length +
-        GameObject.FindGameObjectsWithTag("Monster3").Length +
-        GameObject.FindGameObjectsWithTag("Monster4").Length +
-        GameObject.FindGameObjectsWithTag("Monster5").Length +
-        GameObject.FindGameObjectsWithTag("Boss").Length;
-
-        ClearCount = LevelTarget;
+        EnemyCount();
 
         enemyhp=GameObject.FindObjectOfType<EnemyHP>();
 
@@ -56,15 +52,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        string currentScene = SceneManager.GetActiveScene().name;
 
-        LevelTarget = GameObject.FindGameObjectsWithTag("Monster1").Length +
-        GameObject.FindGameObjectsWithTag("Monster2").Length +
-        GameObject.FindGameObjectsWithTag("Monster3").Length +
-        GameObject.FindGameObjectsWithTag("Monster4").Length +
-        GameObject.FindGameObjectsWithTag("Monster5").Length +
-        GameObject.FindGameObjectsWithTag("Boss").Length;
-
-        ClearCount = LevelTarget;
+        EnemyCount();
 
         if (bulletbag != null)
         {
@@ -75,7 +65,19 @@ public class GameManager : MonoBehaviour
         {
             ClearLevel = true;
             Debug.Log("已打倒場上所有怪物！");
-            if (ClearLevel)
+
+            if (ClearLevel && currentScene == "Level5-3")
+            {
+                isLastLevel = true;
+
+                SceneManager.LoadScene("End Scene");
+
+            }
+            else if (currentScene=="End Scene")
+            {
+                //StartCoroutine(PlayFinalLevel());
+            }
+            else
             {
                 UnlockLevel();
                 ShowClearLevel();
@@ -87,6 +89,35 @@ public class GameManager : MonoBehaviour
             ClearLevel = false;
         }
 
+    }
+
+    //計算場景中含有Monster和BossTag的物件總數，並將其設定為通關條件(ClearCount=0才算通關)
+    void EnemyCount()
+    {
+        LevelTarget = GameObject.FindGameObjectsWithTag("Monster1").Length +
+        GameObject.FindGameObjectsWithTag("Monster2").Length +
+        GameObject.FindGameObjectsWithTag("Monster3").Length +
+        GameObject.FindGameObjectsWithTag("Monster4").Length +
+        GameObject.FindGameObjectsWithTag("Monster5").Length +
+        GameObject.FindGameObjectsWithTag("Boss").Length;
+
+        ClearCount = LevelTarget;
+    }
+
+    //判斷玩家是否玩到最後一關
+    private IEnumerator PlayFinalLevel()
+    {
+        // 等待1.5f確保戰鬥相關效果結束
+        yield return new WaitForSeconds(1.5f);
+
+        // 解鎖關卡進度
+        //UnlockLevel();
+
+        // 觸發結局劇情
+        if (dialogueManager != null)
+        {
+            dialogueManager.PlayLevelStory(); // 觸發結局對話
+        }
     }
 
     void ShowClearLevel()

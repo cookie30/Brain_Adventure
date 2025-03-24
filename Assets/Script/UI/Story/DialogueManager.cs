@@ -74,10 +74,16 @@ public class DialogueManager : MonoBehaviour
         劇情_理性精神體 = GameObject.Find("劇情_理性精神體");
 
         MessageFrame = GameObject.Find("UI/Story/對話框");
-        frameAnim=GameObject.Find("UI/Story/對話框").GetComponent<Animator>();
-        Name = GameObject.Find("UI/Story/對話框/Name").GetComponent<TextMeshProUGUI>();
-        Story = GameObject.Find("UI/Story/對話框/Story").GetComponent<TextMeshProUGUI>();
-        PortraitImage = GameObject.Find("UI/Story/對話框/Portraits").GetComponent<RawImage>();
+
+        if (MessageFrame != null)
+        {
+            Name = MessageFrame.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+            Story = MessageFrame.transform.Find("Story").GetComponent<TextMeshProUGUI>();
+            PortraitImage = GameObject.Find("UI/Story/對話框/Portraits").GetComponent<RawImage>();
+            frameAnim = MessageFrame.transform.GetComponent<Animator>();
+        }
+
+
 
         storyController =GameObject.FindObjectOfType<StoryController>();
         if (storyController == null)
@@ -125,11 +131,9 @@ public class DialogueManager : MonoBehaviour
 
         PlayLevelStory();
 
-        MessageFrame = GameObject.Find("UI/Story/對話框");
-        PortraitImage = GameObject.Find("UI/Story/對話框/Portraits").GetComponent<RawImage>();
-        frameAnim = MessageFrame.GetComponent<Animator>();
     }
 
+    //根據關卡進度撥放對應劇情
     public void PlayLevelStory()
     {
         switch (SceneManager.GetActiveScene().name)
@@ -149,17 +153,18 @@ public class DialogueManager : MonoBehaviour
             case "Level5-1":
                 Stage5.TriggerDialogue();
                 break;
-            case "Level5-3":
-                if(gameManager.ClearLevel==true)
+            case "End Scene":
+                if(gameManager.isLastLevel == true)
                     End.TriggerDialogue();
                 break;
 
         }
     }
 
-    //開始劇情
+    //開始播放劇情
     public void StartDialogue(Dialogue dialogue,DialogueTrigger trigger)
     {
+
         DialogueisPlay = true;
         frameAnim.SetBool("isOpen", true);
         //儲存現在開啟的Trigger
@@ -167,11 +172,36 @@ public class DialogueManager : MonoBehaviour
         SentenceIndex = 0;
 
         levelName=trigger.gameObject.name;
-        //清空放姓名、對話和頭像的序列(上一頁的內容)
-        speakers.Clear();
-        sentences.Clear();
-        portraits.Clear();  // 清空頭像隊列
 
+        ////清空放姓名、對話和頭像的序列(上一頁的內容)
+        if (speakers == null)
+        {
+            speakers=new Queue<string>();
+        }
+        else
+        {
+            speakers.Clear();
+        }
+
+        if (sentences == null)
+        {
+            sentences=new Queue<string>();
+        }
+        else
+        {
+            sentences.Clear();
+        }
+
+        if (portraits == null)
+        {
+            portraits=new Queue<Texture>();
+        }
+        else
+        {
+            portraits.Clear();
+        }
+
+        //在序列中放入dialogue物件裡設定的名字、頭像
         foreach (string speaker in dialogue.名字)
         {
             speakers.Enqueue(speaker);
@@ -182,7 +212,7 @@ public class DialogueManager : MonoBehaviour
             portraits.Enqueue(portrait);
         }
 
-        //在序列中放入dialogue物件裡設定的對話文字
+        //在對話序列中放入dialogue物件裡設定的對話
         foreach (string 顯示內容 in dialogue.劇情內容)
         {
             sentences.Enqueue(顯示內容);
@@ -195,8 +225,29 @@ public class DialogueManager : MonoBehaviour
     //顯示下一段文字(下一頁按鈕)
     public void DisplayNextSentence()
     {
-        
+        if (sentences == null && currentTrigger != null)
+        {
+            sentences = new Queue<string>();
+            foreach (string 顯示內容 in currentTrigger.dialogue.劇情內容)
+            {
+                sentences.Enqueue(顯示內容);
+            }
+
+            return;
+        }
+
+        if (speakers == null && currentTrigger != null)
+        {
+            speakers = new Queue<string>();
+            foreach (string 顯示內容 in currentTrigger.dialogue.劇情內容)
+            {
+                sentences.Enqueue(顯示內容);
+            }
+            return;
+        }
+
         //Debug.Log("Button clicked, DisplayNextSentence called.");
+
         //當序列的元件數量為0(文字顯示完了)
         if (sentences.Count == 0||speakers.Count==0)
         {
@@ -210,7 +261,16 @@ public class DialogueManager : MonoBehaviour
 
         //讓字元變數sentence等於序列
         string spk = speakers.Dequeue();
+        //if (speakers.Count == 0)
+        //{
+        //    spk = "No Name";
+        //}
+
         string sen = sentences.Dequeue();
+        //if (sentences.Count == 0)
+        //{
+        //    sen = "...";
+        //}
 
         //讓PortraitImage的貼圖等於portrait序列的貼圖(沒有的話就=null)
         Texture portrait = portraits.Count>0 ? portraits.Dequeue() : null;
@@ -220,6 +280,7 @@ public class DialogueManager : MonoBehaviour
         SwitchCharacterModel(levelName, spk, SentenceIndex);
         SentenceIndex++;
 
+        //在啟動逐字效果前
         StopAllCoroutines();
         //讓文本逐字顯示
         StartCoroutine(TypeSentences(spk,sen,portrait));
@@ -239,14 +300,6 @@ public class DialogueManager : MonoBehaviour
             Name.gameObject.SetActive(false);
         }
 
-        Story.text = "";
-        PortraitImage.texture = portrait;
-        foreach (char letter in sentence.ToCharArray())
-        {
-            Story.text += letter;
-            yield return null;
-        }
-
         // 如果 portrait 不是 null，則顯示頭像，否則隱藏頭像
         if (portrait != null)
         {
@@ -258,13 +311,11 @@ public class DialogueManager : MonoBehaviour
             PortraitImage.gameObject.SetActive(false); // 隱藏頭像
         }
 
-        if (speaker == null)
+        Story.text = "";
+        PortraitImage.texture = portrait;
+        foreach (char letter in sentence.ToCharArray())
         {
-            Name.text = "";
-        }
-
-        if (portrait == null)
-        {
+            Story.text += letter;
             yield return null;
         }
 
@@ -329,12 +380,25 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         //print("劇情對話放完了！");
-        frameAnim.SetBool("isOpen",false);
-        
 
+        if (frameAnim != null)
+        {
+            frameAnim.SetBool("isOpen", false);
+        }
+        else
+        {
+            Debug.LogError("frameAnim 引用為空，請在 Inspector 中指定");
+        }
+
+        if (sentences != null) sentences.Clear();
+        if (speakers != null) speakers.Clear();
+        if (portraits != null) portraits.Clear();
+
+        //在1-1關接續撥放劇情和打開操作介面
         if (SceneManager.GetActiveScene().name == "Level1-1")
         {
             dialoguePhase++;
+            Debug.Log($"對話階段:{dialoguePhase}");
 
             if (dialoguePhase == 1)
             {

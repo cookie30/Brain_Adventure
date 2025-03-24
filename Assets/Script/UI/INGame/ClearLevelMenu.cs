@@ -20,11 +20,6 @@ public class ClearLevelMenu : MonoBehaviour
     public void JumpNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
-        if (SceneManager.GetActiveScene().name == "Level5-3")
-        {
-            
-        }
     }
 
     public void GoBackMain()

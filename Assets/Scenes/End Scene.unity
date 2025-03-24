@@ -487,17 +487,36 @@ PrefabInstance:
       objectReference: {fileID: 1168258825}
     - target: {fileID: 6184452418626152535, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6184452418626152535, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: isLastLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6184452418626152535, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
       propertyPath: ClearLevelMenu
       value: 
       objectReference: {fileID: 1168258824}
+    - target: {fileID: 6184452418626152535, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1252719193}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+--- !u!114 &1252719193 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5836194719267640322, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+  m_PrefabInstance: {fileID: 1252719192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa4c86291fd1b245adbc56479dcfb9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1372700941
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 967146390783059448, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 967146390783059451, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
       propertyPath: m_Pivot.x
@@ -816,6 +835,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1756268300391807712, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: "dialogue.\u540D\u5B57.Array.data[1]"
+      value: ' '
+      objectReference: {fileID: 0}
     - target: {fileID: 2047220716296363324, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
       propertyPath: m_Type
       value: 0
@@ -824,6 +847,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 18ba293705ab4ee429c8b87f737160cd, type: 3}
+    - target: {fileID: 4745510399417983726, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6125323218634854610, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: "dialogue.\u540D\u5B57.Array.data[12]"
+      value: ' '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
