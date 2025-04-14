@@ -1652,6 +1652,7 @@ MonoBehaviour:
   ClearLevel: 0
   ClearLevelMenu: {fileID: 967146390492086087}
   dialogueManager: {fileID: 0}
+  FinalBackGround: {fileID: 0}
   enemyhp: {fileID: 0}
   isLastLevel: 0
   m_HPBar: {fileID: 967146390624339055}
@@ -3820,7 +3821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9118768554892530294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3868,7 +3869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1983393250, guid: de55a5e30a8003d4095097dd4ad0d421, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

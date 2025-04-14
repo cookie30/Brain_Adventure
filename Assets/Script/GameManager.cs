@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using StarterAssets;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class GameManager : MonoBehaviour
     public ClearLevelMenu ClearLevelMenu;
     [Tooltip("結局劇情")]
     public DialogueManager dialogueManager;
+    public GameObject FinalBackGround;
 
     public EnemyHP enemyhp;
     public bool isLastLevel=false; //是否為最後一關
@@ -35,7 +38,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FinalBackGround = GameObject.Find("UI/Story/Background");
+        FinalBackGround.gameObject.SetActive(false);
+     
+        dialogueManager=this.GetComponent<DialogueManager>();
         
+
         //保存場景名稱(給遊戲結束的選單使用)
         string currentScene = SceneManager.GetActiveScene().name;
         PlayerPrefs.SetString("PreviousScene", currentScene);
@@ -69,14 +77,27 @@ public class GameManager : MonoBehaviour
             if (ClearLevel && currentScene == "Level5-3")
             {
                 isLastLevel = true;
+                Debug.Log("打完所有關卡了！");
 
-                SceneManager.LoadScene("End Scene");
+                Cursor.visible = true;
+                FinalBackGround.gameObject.SetActive(true);
+                dialogueManager.PlayLevelStory(); // 觸發結局對話
+
+                //if (isLastLevel)
+                //{
+                //    Cursor.visible = true;
+                //    //StarterAssetsInputs.SetCursorState(true);
+                //    FinalBackGround.gameObject.SetActive(true);
+                //    dialogueManager.PlayLevelStory(); // 觸發結局對話
+
+                //}
+                //SceneManager.LoadScene("End Scene");
 
             }
-            else if (currentScene=="End Scene")
-            {
-                //StartCoroutine(PlayFinalLevel());
-            }
+            //else if (currentScene=="End Scene")
+            //{
+            //    StartCoroutine(PlayFinalLevel());
+            //}
             else
             {
                 UnlockLevel();
@@ -88,6 +109,8 @@ public class GameManager : MonoBehaviour
         {
             ClearLevel = false;
         }
+
+        if (isLastLevel) return;
 
     }
 

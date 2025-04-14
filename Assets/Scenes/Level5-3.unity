@@ -1461,6 +1461,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5742955964333900042, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5742955964333900043, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -2027,6 +2031,10 @@ PrefabInstance:
     - target: {fileID: 5742955964333900042, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
       propertyPath: m_Name
       value: Monster3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742955964333900042, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5742955964333900043, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
       propertyPath: m_RootOrder
@@ -6142,6 +6150,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 967146390624339053, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 967146390772971200, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6234,11 +6246,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1513111615501280133, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756268300391807712, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: firstplay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756268300391807712, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: dialogue.portraits.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470978872747812648, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+--- !u!1 &961023501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1513111615501280133, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+  m_PrefabInstance: {fileID: 961023500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &970844691 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 967146390624339055, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
@@ -6266,6 +6299,10 @@ PrefabInstance:
     - target: {fileID: 1245086940471487646, guid: 23563ce742fea0a4a8907ff9d019031a, type: 3}
       propertyPath: m_Name
       value: "\u5287\u60C5_\u7406\u6027\u7CBE\u795E\u9AD4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1245086940471487646, guid: 23563ce742fea0a4a8907ff9d019031a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245086940471487647, guid: 23563ce742fea0a4a8907ff9d019031a, type: 3}
       propertyPath: "\u5287\u60C5_\u672C\u9AD4"
@@ -6617,6 +6654,10 @@ PrefabInstance:
     - target: {fileID: 6609182286224994839, guid: 61f06cfbe5f9f4e4883d62fec1ac7708, type: 3}
       propertyPath: m_Name
       value: Monster4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6609182286224994839, guid: 61f06cfbe5f9f4e4883d62fec1ac7708, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6609182286278757620, guid: 61f06cfbe5f9f4e4883d62fec1ac7708, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6980,6 +7021,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5836194719267640322, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: Hip
+      value: 
+      objectReference: {fileID: 1252936737}
+    - target: {fileID: 5836194719267640322, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
       propertyPath: Name
       value: 
       objectReference: {fileID: 635733266}
@@ -7007,6 +7052,14 @@ PrefabInstance:
       propertyPath: "\u5287\u60C5_\u672C\u9AD4"
       value: 
       objectReference: {fileID: 2015235360}
+    - target: {fileID: 5836194719267640322, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: FinalBackGround
+      value: 
+      objectReference: {fileID: 961023501}
+    - target: {fileID: 5836194719267640322, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: storyController
+      value: 
+      objectReference: {fileID: 2015235361}
     - target: {fileID: 5836194719267640322, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
       propertyPath: "\u5287\u60C5_\u611F\u6027\u7CBE\u795E\u9AD4"
       value: 
@@ -7075,11 +7128,30 @@ PrefabInstance:
       propertyPath: ClearLevelMenu
       value: 
       objectReference: {fileID: 1064826364}
+    - target: {fileID: 6184452418626152535, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: FinalBackGround
+      value: 
+      objectReference: {fileID: 961023501}
+    - target: {fileID: 6184452418626152535, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb7d881cb9eb2b641b8ac6e867699d72, type: 3}
+--- !u!114 &1252936737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1787100218352738971, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+  m_PrefabInstance: {fileID: 961023500}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5e483ad54f9dc498433948b60a4975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1323809672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2771629350537528488, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
@@ -7128,6 +7200,10 @@ PrefabInstance:
     - target: {fileID: 9015415705028523870, guid: 3cc76a99c0433f340a3c836c92d1c17d, type: 3}
       propertyPath: m_Name
       value: Monster5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9015415705028523870, guid: 3cc76a99c0433f340a3c836c92d1c17d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9015415705028523871, guid: 3cc76a99c0433f340a3c836c92d1c17d, type: 3}
       propertyPath: m_RootOrder
@@ -7631,7 +7707,7 @@ MonoBehaviour:
   m_Script: {fileID: 365290288, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectid: 
+  projectid: 387793159
   updateInt: 10
   newSplatMapRestoreCode: 0
   toolbarInt: 4
@@ -10378,6 +10454,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6597246739412473298, guid: 1afc2b7b567f81e4d8efbdd7770ce2c6, type: 3}
   m_PrefabInstance: {fileID: 2015235359}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2015235361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6597246739412473297, guid: 1afc2b7b567f81e4d8efbdd7770ce2c6, type: 3}
+  m_PrefabInstance: {fileID: 2015235359}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015235360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9690ba3ced5eb2746946efbd54cd5a91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2025233721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10494,6 +10581,10 @@ PrefabInstance:
     - target: {fileID: 1999260544303857252, guid: e62f4157700c9d746b839a6b59119b83, type: 3}
       propertyPath: m_Name
       value: "\u5287\u60C5_\u611F\u6027\u7CBE\u795E\u9AD4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999260544303857252, guid: e62f4157700c9d746b839a6b59119b83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5049996052114112165, guid: e62f4157700c9d746b839a6b59119b83, type: 3}
       propertyPath: "\u5287\u60C5_\u672C\u9AD4"
