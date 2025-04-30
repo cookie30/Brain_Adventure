@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     [Tooltip("清完怪後跳出的通關頁面")]
     public ClearLevelMenu ClearLevelMenu;
     [Tooltip("結局劇情")]
-    public DialogueManager dialogueManager;
+    //public DialogueManager dialogueManager;
     public GameObject FinalBackGround;
 
     public EnemyHP enemyhp;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         FinalBackGround = GameObject.Find("UI/Story/Background");
         FinalBackGround.gameObject.SetActive(false);
      
-        dialogueManager=this.GetComponent<DialogueManager>();
+        //dialogueManager=this.GetComponent<DialogueManager>();
         
 
         //保存場景名稱(給遊戲結束的選單使用)
@@ -74,14 +74,17 @@ public class GameManager : MonoBehaviour
             ClearLevel = true;
             Debug.Log("已打倒場上所有怪物！");
 
-            if (ClearLevel && currentScene == "Level5-3")
+            if (currentScene == "Level5-3")
             {
                 isLastLevel = true;
                 Debug.Log("打完所有關卡了！");
 
                 Cursor.visible = true;
                 FinalBackGround.gameObject.SetActive(true);
-                dialogueManager.PlayLevelStory(); // 觸發結局對話
+                
+                // 觸發結局對話
+                //dialogueManager.PlayLevelStory();
+                GameObject.Find("/GameManager").GetComponent<DialogueManager>().PlayLevelStory();
 
                 //if (isLastLevel)
                 //{
@@ -137,10 +140,10 @@ public class GameManager : MonoBehaviour
         //UnlockLevel();
 
         // 觸發結局劇情
-        if (dialogueManager != null)
-        {
-            dialogueManager.PlayLevelStory(); // 觸發結局對話
-        }
+        //if (dialogueManager != null)
+        //{
+        //    dialogueManager.PlayLevelStory(); // 觸發結局對話
+        //}
     }
 
     void ShowClearLevel()

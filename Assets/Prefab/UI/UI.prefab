@@ -1651,7 +1651,6 @@ MonoBehaviour:
   ClearCount: 0
   ClearLevel: 0
   ClearLevelMenu: {fileID: 967146390492086087}
-  dialogueManager: {fileID: 0}
   FinalBackGround: {fileID: 0}
   enemyhp: {fileID: 0}
   isLastLevel: 0
@@ -3821,7 +3820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9118768554892530294
 RectTransform:
   m_ObjectHideFlags: 0

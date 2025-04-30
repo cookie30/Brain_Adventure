@@ -51,7 +51,7 @@ public class DialogueManager : MonoBehaviour
     public Animator frameAnim;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         DialogueisPlay = false;
         
@@ -162,6 +162,10 @@ public class DialogueManager : MonoBehaviour
                     Debug.Log("開始播放結局...");
                     End.TriggerDialogue();
                 }
+                else
+                {
+                    Stage5.TriggerDialogue();
+                }
                 break;
 
         }
@@ -179,33 +183,11 @@ public class DialogueManager : MonoBehaviour
 
         levelName=trigger.gameObject.name;
 
-        ////清空放姓名、對話和頭像的序列(上一頁的內容)
-        if (speakers == null)
-        {
-            speakers=new Queue<string>();
-        }
-        else
-        {
-            speakers.Clear();
-        }
+        //清空放姓名、對話和頭像的序列(上一頁的內容)
+        speakers.Clear();
+        sentences.Clear();
+        portraits.Clear();
 
-        if (sentences == null)
-        {
-            sentences=new Queue<string>();
-        }
-        else
-        {
-            sentences.Clear();
-        }
-
-        if (portraits == null)
-        {
-            portraits=new Queue<Texture>();
-        }
-        else
-        {
-            portraits.Clear();
-        }
 
         //在序列中放入dialogue物件裡設定的名字、頭像
         foreach (string speaker in dialogue.名字)
@@ -235,24 +217,12 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Sentences is null: " + (sentences == null));
         Debug.Log("Speakers is null: " + (speakers == null));
 
-        if (sentences == null && currentTrigger != null)
+        // 檢查隊列是否為null
+        if (sentences == null || speakers == null)
         {
-            sentences = new Queue<string>();
-            foreach (string 顯示內容 in currentTrigger.dialogue.劇情內容)
-            {
-                sentences.Enqueue(顯示內容);
-            }
+            Debug.Log("隊列對象為null！");
 
-            return;
-        }
-
-        if (speakers == null && currentTrigger != null)
-        {
-            speakers = new Queue<string>();
-            foreach (string 顯示內容 in currentTrigger.dialogue.劇情內容)
-            {
-                sentences.Enqueue(顯示內容);
-            }
+            EndDialogue();
             return;
         }
 
@@ -272,12 +242,19 @@ public class DialogueManager : MonoBehaviour
         }
 
         //讓變數等於序列
-        string spk = speakers.Dequeue();
-        string sen = sentences.Dequeue();
+        //string spk = speakers.Dequeue();
+        //string sen = sentences.Dequeue();
+
+        string spk = speakers.Peek();
+        string sen = sentences.Peek();
 
         // 檢查 spk 和 sen 是否為 null
         Debug.Log("Current speaker: " + spk);
         Debug.Log("Current sentence: " + sen);
+
+        speakers.Dequeue();
+        sentences.Dequeue();
+
 
         //讓PortraitImage的貼圖等於portrait序列的貼圖(沒有的話就=null)
         Texture portrait = portraits.Count>0 ? portraits.Dequeue() : null;
@@ -393,14 +370,10 @@ public class DialogueManager : MonoBehaviour
         {
             frameAnim.SetBool("isOpen", false);
         }
-        else
-        {
-            Debug.LogError("frameAnim 引用為空，請在 Inspector 中指定");
-        }
-
-        if (sentences != null) sentences.Clear();
-        if (speakers != null) speakers.Clear();
-        if (portraits != null) portraits.Clear();
+        //else
+        //{
+        //    Debug.LogError("frameAnim 引用為空，請在 Inspector 中指定");
+        //}
 
         //在1-1關接續撥放劇情和打開操作介面
         if (SceneManager.GetActiveScene().name == "Level1-1")
@@ -421,7 +394,12 @@ public class DialogueManager : MonoBehaviour
                 Hip.OpenHip();
             }
         }
-
+        //在5-3關播放完劇情後，回到主頁面
+        if (SceneManager.GetActiveScene().name == "Level5-3" &&
+            gameManager.isLastLevel == true)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
         DialogueisPlay = false;
     }
 

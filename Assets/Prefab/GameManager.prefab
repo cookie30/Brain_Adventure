@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6184452418626152528}
   - component: {fileID: 6184452418626152535}
   - component: {fileID: 5836194719267640322}
+  - component: {fileID: 3998600925151084591}
   - component: {fileID: 732134135270455128}
   - component: {fileID: 7336871503086758390}
   m_Layer: 0
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6184452418626152534}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6184452418626152535
 MonoBehaviour:
@@ -51,6 +52,9 @@ MonoBehaviour:
   ClearCount: 0
   ClearLevel: 0
   ClearLevelMenu: {fileID: 0}
+  FinalBackGround: {fileID: 0}
+  enemyhp: {fileID: 0}
+  isLastLevel: 0
   m_HPBar: {fileID: 0}
   bulletbag: {fileID: 0}
   BulletBag: 0
@@ -67,6 +71,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6184452418626152535}
+  Hip: {fileID: 0}
+  SentenceIndex: 0
+  storyController: {fileID: 0}
+  DialogueisPlay: 0
+  "\u5287\u60C5_\u672C\u9AD4": {fileID: 0}
+  "\u5287\u60C5_\u7406\u6027\u7CBE\u795E\u9AD4": {fileID: 0}
+  "\u5287\u60C5_\u611F\u6027\u7CBE\u795E\u9AD4": {fileID: 0}
+  MessageFrame: {fileID: 0}
+  Name: {fileID: 0}
+  Story: {fileID: 0}
+  PortraitImage: {fileID: 0}
+  frameAnim: {fileID: 0}
+--- !u!114 &3998600925151084591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184452418626152534}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc77b765a0b74a459b4c2a026721068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 6184452418626152535}
+  Hip: {fileID: 0}
+  SentenceIndex: 0
+  storyController: {fileID: 0}
+  DialogueisPlay: 0
+  "\u5287\u60C5_\u672C\u9AD4": {fileID: 0}
+  "\u5287\u60C5_\u7406\u6027\u7CBE\u795E\u9AD4": {fileID: 0}
+  "\u5287\u60C5_\u611F\u6027\u7CBE\u795E\u9AD4": {fileID: 0}
   MessageFrame: {fileID: 0}
   Name: {fileID: 0}
   Story: {fileID: 0}
