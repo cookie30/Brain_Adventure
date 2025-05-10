@@ -1751,8 +1751,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2239497515997114835}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000006854534, y: 1.5, z: 0.49999636}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000000923872, y: 1.4999999, z: 0.49999762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5720,7 +5720,7 @@ GameObject:
   - component: {fileID: 5312231590101109147}
   - component: {fileID: 787724385880690450}
   m_Layer: 8
-  m_Name: MiniMap
+  m_Name: MiniMap_PlayerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
