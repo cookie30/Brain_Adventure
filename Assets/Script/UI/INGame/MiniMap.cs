@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class MiniMap : MonoBehaviour
 {
-    public Transform Player;
+    public Transform Target;
 
     private void Start()
     {
-        Player=GameObject.Find("Player").GetComponent<Transform>();
+        //Target=GameObject.Find("Player").GetComponent<Transform>();
+        Target = gameObject.GetComponent<Transform>();
     }
 
+    //LateUpdate:有啟用這個函式所掛著的腳本元件才會執行的Update
     private void LateUpdate()
     {
-        Vector3 newPosition =Player.position;
+        //讓地圖icon抓取需要對齊的目標座標(newPoition=目標)
+        Vector3 newPosition =Target.position;
         newPosition.y=transform.position.y;
         transform.position = newPosition;
 
-        transform.rotation=Quaternion.Euler(90f,Player.eulerAngles.y,0f);
+        //設定地圖icon的位置(目標
+        transform.rotation=Quaternion.Euler(90f,Target.eulerAngles.y,0f);
     }
 }

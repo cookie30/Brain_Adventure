@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 90b67a7e3452bbb49a0d15bdc90529b6, type: 2}
   m_LightingSettings: {fileID: 1667281828}
 --- !u!196 &4
 NavMeshSettings:
@@ -4247,7 +4247,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -5556,6 +5556,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.0000003427267
       objectReference: {fileID: 0}
+    - target: {fileID: 4171162656803426733, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+      propertyPath: frontsight
+      value: 
+      objectReference: {fileID: 34711189}
+    - target: {fileID: 4171162656803426733, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+      propertyPath: scopeOverlay
+      value: 
+      objectReference: {fileID: 1285237798}
     - target: {fileID: 4257459388345088293, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.00000003585592
@@ -19780,7 +19788,7 @@ LightingSettings:
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
   m_UsingShadowmask: 1
-  m_BakeBackend: 1
+  m_BakeBackend: 2
   m_LightmapMaxSize: 1024
   m_BakeResolution: 40
   m_Padding: 2
@@ -19812,14 +19820,14 @@ LightingSettings:
   m_PVRBounces: 2
   m_PVRMinBounces: 2
   m_PVREnvironmentImportanceSampling: 1
-  m_PVRFilteringMode: 1
+  m_PVRFilteringMode: 2
   m_PVRDenoiserTypeDirect: 1
   m_PVRDenoiserTypeIndirect: 1
   m_PVRDenoiserTypeAO: 1
   m_PVRFilterTypeDirect: 0
   m_PVRFilterTypeIndirect: 0
   m_PVRFilterTypeAO: 0
-  m_PVRFilteringGaussRadiusDirect: 1
+  m_PVRFilteringGaussRadiusDirect: 3
   m_PVRFilteringGaussRadiusIndirect: 5
   m_PVRFilteringGaussRadiusAO: 2
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
