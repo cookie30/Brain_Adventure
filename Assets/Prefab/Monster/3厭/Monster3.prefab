@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 3662802924335997475}
   - component: {fileID: 7873089172864407223}
   - component: {fileID: 4346389735602981372}
-  - component: {fileID: 5556094022956427817}
   m_Layer: 8
   m_Name: UI_3Icon
   m_TagString: Untagged
@@ -108,7 +107,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3288486626219972310}
-  m_Father: {fileID: 5742955964333900043}
+  m_Father: {fileID: 3639778945928376832}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -178,19 +177,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5556094022956427817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3623430421916941614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4ae0f8c473bab4db1e3f4df1fd453a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 0}
 --- !u!1 &4163796684753725626
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +216,7 @@ Transform:
   m_Children:
   - {fileID: 5742955965170947557}
   - {fileID: 5742955963805851167}
+  - {fileID: 8452548152169434923}
   m_Father: {fileID: 5742955964333900043}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &372897444331961765
@@ -370,7 +357,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.4
-  m_BaseOffset: 0.15
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3639778945928376838
@@ -596,12 +583,11 @@ Transform:
   m_GameObject: {fileID: 5742955964333900042}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.59, y: 1, z: 10.19}
+  m_LocalPosition: {x: 12.59, y: 2, z: 10.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3639778945928376832}
-  - {fileID: 8452548152169434923}
   - {fileID: 5742955964404490160}
   - {fileID: 5742955965517330472}
   m_Father: {fileID: 0}
@@ -876,7 +862,7 @@ Transform:
   m_GameObject: {fileID: 5742955965517330475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.35, y: 1, z: 9}
+  m_LocalPosition: {x: -10, y: 1, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

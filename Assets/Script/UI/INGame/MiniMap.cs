@@ -8,8 +8,7 @@ public class MiniMap : MonoBehaviour
 
     private void Start()
     {
-        //Target=GameObject.Find("Player").GetComponent<Transform>();
-        Target = gameObject.GetComponent<Transform>();
+        Target=GameObject.Find("Player").GetComponent<Transform>();
     }
 
     //LateUpdate:有啟用這個函式所掛著的腳本元件才會執行的Update
@@ -17,6 +16,7 @@ public class MiniMap : MonoBehaviour
     {
         //讓地圖icon抓取需要對齊的目標座標(newPoition=目標)
         Vector3 newPosition =Target.position;
+        Debug.Log("Target Position: " + newPosition);
         newPosition.y=transform.position.y;
         transform.position = newPosition;
 

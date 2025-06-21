@@ -19594,6 +19594,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 2020609379}
+    - target: {fileID: 3097797243904947640, guid: 113ed873a93124143b3ea1b2f6bfe559, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 2020609379}
     - target: {fileID: 3097797243904947644, guid: 113ed873a93124143b3ea1b2f6bfe559, type: 3}
       propertyPath: m_Name
       value: MiniMapCamera

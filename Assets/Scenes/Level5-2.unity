@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 7adfa88169b900148843790e5b3910e8, type: 2}
   m_LightingSettings: {fileID: 353619967}
 --- !u!196 &4
 NavMeshSettings:
@@ -2405,6 +2405,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2009169593509733533, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3639778945928376838, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
       propertyPath: Buff1
       value: 
@@ -2487,11 +2491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5742955965517330472, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.48
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 5742955965517330472, guid: 54f55992a3153c848983ecbfc44b2bd6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.54
+      value: -8.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3126,6 +3130,11 @@ MonoBehaviour:
   markerStartUVY: 0
   customPoints: []
   handleObject: {fileID: 0}
+--- !u!4 &641660097 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7190847470318102350, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+  m_PrefabInstance: {fileID: 85088021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &692083971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8023,6 +8032,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3097797243904947640, guid: 113ed873a93124143b3ea1b2f6bfe559, type: 3}
+      propertyPath: Target
+      value: 
+      objectReference: {fileID: 641660097}
     - target: {fileID: 3097797243904947644, guid: 113ed873a93124143b3ea1b2f6bfe559, type: 3}
       propertyPath: m_Name
       value: MiniMapCamera

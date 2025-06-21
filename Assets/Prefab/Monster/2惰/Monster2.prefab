@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3059342152814969616}
   - component: {fileID: 3907135507019170110}
   - component: {fileID: 8967642424319625496}
-  - component: {fileID: 5150605478333510084}
   m_Layer: 8
   m_Name: UI_2Icon
   m_TagString: Untagged
@@ -103,19 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5150605478333510084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1560243080634914233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4ae0f8c473bab4db1e3f4df1fd453a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 5372208527555307630}
 --- !u!1 &4739541206754816724
 GameObject:
   m_ObjectHideFlags: 0
