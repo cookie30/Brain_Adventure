@@ -16,7 +16,7 @@ public class MiniMap : MonoBehaviour
     {
         //讓地圖icon抓取需要對齊的目標座標(newPoition=目標)
         Vector3 newPosition =Target.position;
-        Debug.Log("Target Position: " + newPosition);
+        //Debug.Log("Target Position: " + newPosition);
         newPosition.y=transform.position.y;
         transform.position = newPosition;
 
