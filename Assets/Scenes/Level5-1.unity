@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.009012722, g: 0.013102869, b: 0.020503528, a: 1}
+  m_IndirectSpecularColor: {r: 0.093289055, g: 0.11830924, b: 0.15385634, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -494,6 +494,14 @@ PrefabInstance:
       propertyPath: ammunitionDisplay
       value: 
       objectReference: {fileID: 267078612}
+    - target: {fileID: 4171162656803426733, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+      propertyPath: frontsight
+      value: 
+      objectReference: {fileID: 961023502}
+    - target: {fileID: 4171162656803426733, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+      propertyPath: scopeOverlay
+      value: 
+      objectReference: {fileID: 961023501}
     - target: {fileID: 7190847470318102349, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
       propertyPath: gameManager
       value: 
@@ -546,6 +554,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8175852271768681750, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+      propertyPath: reloadingDisplay
+      value: 
+      objectReference: {fileID: 345292805}
+    - target: {fileID: 8175852271768681750, guid: 7bf67fd3c445d39458de6fd3a39fc267, type: 3}
+      propertyPath: ammunitionDisplay
+      value: 
+      objectReference: {fileID: 267078612}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6726,6 +6742,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+--- !u!1 &961023501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 967146390180798755, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+  m_PrefabInstance: {fileID: 961023500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &961023502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 967146390289607776, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
+  m_PrefabInstance: {fileID: 961023500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &970844691 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 967146390624339055, guid: 352cb1912e4144649a7efd858c56ba38, type: 3}
